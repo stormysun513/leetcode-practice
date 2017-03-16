@@ -18,4 +18,20 @@ public class Solution {
         }
         return ans;
     }
+
+    public int maxSubArray2(int[] nums) {
+        if(nums == null || nums.length == 0) 
+            return 0;
+
+        int sum = nums[0];
+        int min = nums[0];
+        int ans = sum;
+
+        for(int i = 1; i < nums.length; i++){
+            sum += nums[i];
+            ans = Math.max(Math.max(ans, sum - min), sum);
+            min = Math.min(min, sum);
+        }
+        return ans;
+    }
 }
